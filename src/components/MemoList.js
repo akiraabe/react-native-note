@@ -26,7 +26,6 @@ class MemoList extends React.Component {
                     <Text style={styles.memoDate}>2019/08/25</Text>
                 </View>
 
-
             </View>
         );
     }

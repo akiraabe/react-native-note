@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-dom';
+import { StyleSheet, View, Text } from 'react-native';
 
 class Appbar extends React.Component {
     render() {
         return (
             <View style={styles.appbar}>
                 <View>
-                    <Text style={styles.appbarTitle}>MEMOT from Components</Text>
+                    <Text style={styles.appbarTitle}>MEMOT</Text>
                 </View>
             </View>
         );
