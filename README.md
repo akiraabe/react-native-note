@@ -7,3 +7,7 @@ yarn start
 or
 
 npm start
+
+
+max_user_watches
+https://www.virment.com/how-to-fix-system-limit-for-number-of-file-watchers-reached/

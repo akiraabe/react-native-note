@@ -2,25 +2,31 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight } from 'react-native';
 import firebase from 'firebase';
 
-class LoginScreen extends React.Component {
+class SignupScreen extends React.Component {
+
     state = {
         email: '',
         password: '',
     }
 
     handleSubmit() {
-        console.log('submitted');
-
-        // navigation
-
-        // login
+        //console.log('handleSubmit');
+        //console.log(this.state.email);
+        //console.log(this.state.password);
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then((user) => {
+                console.log('succcess', user);
+                this.props.navigation.navigate('Home');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
     }
-
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>ログイン</Text>
+                <Text style={styles.title}>メンバー登録</Text>
                 <TextInput
                     style={styles.input}
                     value={this.state.email}
@@ -29,7 +35,7 @@ class LoginScreen extends React.Component {
                     autoCorrect={false}
                     placeholder="Email Address"
                 />
-                < TextInput
+                <TextInput
                     style={styles.input}
                     value={this.state.password}
                     onChangeText={(text) => { this.setState({ password: text }); }}
@@ -39,7 +45,7 @@ class LoginScreen extends React.Component {
                     secureTextEntry
                 />
                 <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)} underlayColor='#c70f66'>
-                    <Text style={styles.buttonTitle}>ログインする</Text>
+                    <Text style={styles.buttonTitle}>送信する</Text>
                 </TouchableHighlight>
             </View>
         );
@@ -81,4 +87,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default LoginScreen;
+export default SignupScreen;

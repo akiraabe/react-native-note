@@ -7,8 +7,8 @@ class MemoListScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <MemoList />
-                <CircleButton>
+                <MemoList navigation={this.props.navigation} />
+                <CircleButton onPress={() => { this.props.navigation.navigate('MemoEdit'); }}>
                     {'\uf067'}
                 </CircleButton>
             </View>
@@ -18,7 +18,7 @@ class MemoListScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         width: '100%',
     }
 });
