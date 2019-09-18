@@ -7,7 +7,8 @@ import SignupScreen from "./src/screens/SignupScreen";
 import firebase from 'firebase';
 
 import EVN from './env.json';
- 
+import MemoCreateScreen from "./src/screens/MemoCreateScreen";
+
 const firebaseConfig = {
   apiKey: EVN.FIREBASE_API_KEY,
   authDomain: EVN.FIREBASE_AUTH_DOMAIN,
@@ -19,11 +20,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const App = createStackNavigator({
-  Signup: { screen: SignupScreen },
   Login: { screen: LoginScreen },
+  Signup: { screen: SignupScreen },
   Home: { screen: MemoListScreen },
   MemoDetail: { screen: MemoDetailScreen },
   MemoEdit: { screen: MemoEditScreen },
+  MemoCreate: { screen: MemoCreateScreen },
 }, {
 
     defaultNavigationOptions: {
