@@ -15,7 +15,7 @@ class MemoDetailScreen extends React.Component {
         const { params } = this.props.navigation.state;
         this.setState({ memo: params.memo });
     }
-    
+
     render() {
         const { memo } = this.state;
         return (
@@ -23,7 +23,7 @@ class MemoDetailScreen extends React.Component {
                 <View>
                     <View style={styles.memoHeader}>
                         <View>
-                            <Text style={styles.memoHeaderTitle}>{memo.body.substring(0,10)}</Text>
+                            <Text style={styles.memoHeaderTitle}>{memo.body.substring(0, 10)}</Text>
                             <Text style={styles.memoHeaderDate}>{dateString(memo.createdOn)}</Text>
                         </View>
                     </View>
@@ -31,10 +31,13 @@ class MemoDetailScreen extends React.Component {
 
                 <View style={styles.memoContent}>
                     <Text style={styles.memoBody}>
-                       {memo.body} 
+                        {memo.body}
                     </Text>
                 </View>
-                <CircleButton color="white" style={styles.editButton} onPress={() => { this.props.navigation.navigate('MemoEdit'); }}>
+                <CircleButton
+                    color="white"
+                    style={styles.editButton}
+                    onPress={() => { this.props.navigation.navigate('MemoEdit', { memo }); }}>
                     {'\uf303'}
                 </CircleButton>
             </View>
