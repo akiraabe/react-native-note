@@ -3,6 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import CircleButton from '../elements/CircleButton';
 
 const dateString = (date) => {
+    console.log('MemoDetailScreen ', date);
     return date.toDate().toISOString().split('T')[0];
 };
 
@@ -16,8 +17,13 @@ class MemoDetailScreen extends React.Component {
         this.setState({ memo: params.memo });
     }
 
+    returnMemo(memo) {
+        this.setState({ memo }); // We can use shorthand instead of { memo : memo }
+    }
+
     render() {
         const { memo } = this.state;
+        console.log('MemoDetailScreen memo -> ', memo);
         return (
             <View style={styles.container}>
                 <View>
@@ -37,7 +43,7 @@ class MemoDetailScreen extends React.Component {
                 <CircleButton
                     color="white"
                     style={styles.editButton}
-                    onPress={() => { this.props.navigation.navigate('MemoEdit', { memo }); }}>
+                    onPress={() => { this.props.navigation.navigate('MemoEdit', { ...memo, returnMemo: this.returnMemo.bind(this) }); }}>
                     {'\uf303'}
                 </CircleButton>
             </View>
